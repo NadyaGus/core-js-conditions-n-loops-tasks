@@ -38,8 +38,18 @@ function isPositive(number) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  let maxNumber;
+
+  if (a > b && c) {
+    maxNumber = a;
+  } else if (b > a && c) {
+    maxNumber = b;
+  } else {
+    maxNumber = c;
+  }
+
+  return maxNumber;
 }
 
 /**
@@ -62,6 +72,17 @@ function getMaxNumber(/* a, b, c */) {
  */
 function canQueenCaptureKing(/* queen, king */) {
   throw new Error('Not implemented');
+  // let result;
+
+  // if (queen.x === king.x || queen.y === king.y) {
+  //   result = true;
+  // } else if (queen.x === queen.y && king.x === king.y) {
+  //   result = true;
+  // } else {
+  //   result = false;
+  // }
+
+  // return result;
 }
 
 /**
@@ -82,8 +103,22 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  let result = false;
+
+  if (a === 0 || b === 0 || c === 0) {
+    return result;
+  }
+
+  if (a === b && a + b > c) {
+    result = true;
+  } else if (a === c && a + c > b) {
+    result = true;
+  } else if (b === c && b + c > a) {
+    result = true;
+  }
+
+  return result;
 }
 
 /**
@@ -100,8 +135,73 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let answer = '';
+
+  if (num > 10) {
+    const firstDigit = Math.floor(num / 10);
+
+    switch (firstDigit) {
+      case 1:
+        answer += 'X';
+        break;
+
+      case 2:
+        answer += 'XX';
+        break;
+
+      case 3:
+        answer += 'XXX';
+        break;
+
+      default:
+        answer += 'X';
+    }
+  }
+
+  const secondDigit = num % 10;
+  switch (secondDigit) {
+    case 1:
+      answer += 'I';
+      break;
+
+    case 2:
+      answer += 'II';
+      break;
+
+    case 3:
+      answer += 'III';
+      break;
+
+    case 4:
+      answer += 'IV';
+      break;
+
+    case 5:
+      answer += 'V';
+      break;
+
+    case 6:
+      answer += 'VI';
+      break;
+
+    case 7:
+      answer += 'VII';
+      break;
+
+    case 8:
+      answer += 'VIII';
+      break;
+
+    case 9:
+      answer += 'IX';
+      break;
+
+    default:
+      answer += 'X';
+  }
+
+  return answer;
 }
 
 /**
