@@ -160,6 +160,7 @@ function convertToRomanNumerals(num) {
   }
 
   const secondDigit = num % 10;
+
   switch (secondDigit) {
     case 1:
       answer += 'I';
@@ -279,6 +280,7 @@ function convertNumberToString(numberStr) {
       answer += ' ';
     }
   }
+
   return answer;
 }
 
@@ -327,6 +329,7 @@ function getIndexOf(str, letter) {
       break;
     }
   }
+
   return index;
 }
 
@@ -348,12 +351,14 @@ function getIndexOf(str, letter) {
 function isContainNumber(num, digit) {
   const numToString = `${num}`;
   let result = false;
+
   for (let i = 0; i < numToString.length; i += 1) {
     if (`${digit}` === numToString[i]) {
       result = true;
       break;
     }
   }
+
   return result;
 }
 
