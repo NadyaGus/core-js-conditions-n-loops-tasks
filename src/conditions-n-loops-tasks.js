@@ -219,8 +219,67 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let answer = '';
+
+  for (let i = 0; i < numberStr.length; i += 1) {
+    const switchCase = numberStr[i];
+
+    switch (switchCase) {
+      case '1':
+        answer += 'one';
+        break;
+
+      case '2':
+        answer += 'two';
+        break;
+
+      case '3':
+        answer += 'three';
+        break;
+
+      case '4':
+        answer += 'four';
+        break;
+
+      case '5':
+        answer += 'five';
+        break;
+
+      case '6':
+        answer += 'six';
+        break;
+
+      case '7':
+        answer += 'seven';
+        break;
+
+      case '8':
+        answer += 'eight';
+        break;
+
+      case '9':
+        answer += 'nine';
+        break;
+
+      case '0':
+        answer += 'zero';
+        break;
+
+      case '-':
+        answer += 'minus';
+        break;
+
+      default:
+        answer += 'point';
+        break;
+    }
+
+    if (i !== numberStr.length - 1) {
+      answer += ' ';
+    }
+  }
+  return answer;
 }
 
 /**
@@ -235,8 +294,14 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let reverseStr = '';
+
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    reverseStr += str[i];
+  }
+
+  return reverseStr === str;
 }
 
 /**
@@ -253,8 +318,16 @@ function isPalindrome(/* str */) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  let index = -1;
+
+  for (let i = 0; i < str.length; i += 1) {
+    if (letter === str[i]) {
+      index = i;
+      break;
+    }
+  }
+  return index;
 }
 
 /**
