@@ -70,19 +70,18 @@ function getMaxNumber(a, b, c) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
-  // let result;
+function canQueenCaptureKing(queen, king) {
+  let result = false;
 
-  // if (queen.x === king.x || queen.y === king.y) {
-  //   result = true;
-  // } else if (queen.x === queen.y && king.x === king.y) {
-  //   result = true;
-  // } else {
-  //   result = false;
-  // }
+  if (queen.x === king.x || queen.y === king.y) {
+    result = true;
+  } else if (queen.x === queen.y && king.x === king.y) {
+    result = true;
+  } else if (queen.x + queen.y === king.x + king.y) {
+    result = true;
+  }
 
-  // return result;
+  return result;
 }
 
 /**
@@ -349,17 +348,20 @@ function getIndexOf(str, letter) {
  *  12345, 6    => false
  */
 function isContainNumber(num, digit) {
-  const numToString = `${num}`;
-  let result = false;
+  let number = num;
+  let lastDigit;
 
-  for (let i = 0; i < numToString.length; i += 1) {
-    if (`${digit}` === numToString[i]) {
-      result = true;
-      break;
+  while (number) {
+    lastDigit = number % 10;
+
+    if (lastDigit === digit) {
+      return true;
     }
+
+    number = (number - lastDigit) / 10;
   }
 
-  return result;
+  return false;
 }
 
 /**
@@ -493,12 +495,9 @@ function shuffleChar(str, iterations) {
     let evenString = '';
     let oddString = '';
 
-    for (let j = 0; j < str.length; j += 1) {
-      if (j % 2 === 0) {
-        evenString += result[j];
-      } else {
-        oddString += result[j];
-      }
+    for (let j = 0; j < str.length; j += 2) {
+      evenString += result[j];
+      oddString += result[j + 1];
     }
     result = evenString + oddString;
   }
